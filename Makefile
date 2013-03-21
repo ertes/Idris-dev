@@ -11,7 +11,7 @@ pinstall: dist/setup-config
 	$(CABAL) install $(CABALFLAGS)
 
 build: dist/setup-config
-	$(CABAL) build $(CABALFLAGS)
+	$(CABAL) build
 
 test:
 	make -C test
@@ -29,5 +29,5 @@ doc: dist/setup-config
 	$(CABAL) haddock --executables --hyperlink-source --html --hoogle --html-location="http://hackage.haskell.org/packages/archive/\$$pkg/latest/doc/html" --haddock-options="--title Idris"
 
 
-dist/setup-config:
+dist/setup-config: idris.cabal Makefile config.mk custom.mk
 	$(CABAL) configure $(CABALFLAGS)
